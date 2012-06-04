@@ -5,9 +5,9 @@
  * Description: Allows admin to download each post as a pdf file
  *  */
 
-add_action('admin_footer-edit.php', 'custom_bulk_admin_footer');
+add_action('admin_footer-edit.php', 'pdf_in_bulk_actions');
 
-function custom_bulk_admin_footer() {
+function pdf_in_bulk_actions() {
   global $post_type;
   if($post_type == 'post') {
     ?>
@@ -22,9 +22,9 @@ function custom_bulk_admin_footer() {
 }
 
 
-add_action('load-edit.php', 'custom_bulk_action');
+add_action('load-edit.php', 'post_to_pdf_action');
 
-function custom_bulk_action() {
+function post_to_pdf_action() {
 
   $wp_list_table = _get_list_table('WP_Posts_List_Table');
   $action = $wp_list_table->current_action();
